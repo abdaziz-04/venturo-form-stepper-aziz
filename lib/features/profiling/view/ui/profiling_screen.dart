@@ -29,30 +29,9 @@ class ProfilingScreen extends StatelessWidget {
                     errorMessage = null;
                   }
 
-                  return TextField(
-                    controller: controller.nameController,
-                    keyboardType: TextInputType.name,
-                    decoration: InputDecoration(
-                      errorText: errorMessage,
-                      labelText: 'Nama',
-                      hintText: 'Masukkan nama anda',
-                      floatingLabelBehavior: FloatingLabelBehavior.always,
-                      floatingLabelStyle: TextStyle(
-                        color: errorMessage != null
-                            ? ColorStyle.danger
-                            : ColorStyle.primary,
-                      ),
-                      border: OutlineInputBorder(
-                        borderRadius: BorderRadius.circular(8.r),
-                      ),
-                      focusedBorder: OutlineInputBorder(
-                        borderRadius: BorderRadius.circular(8.r),
-                        borderSide: const BorderSide(
-                          color: ColorStyle.primary,
-                          width: 2,
-                        ),
-                      ),
-                    ),
+                  return CustomTextFieldWidget(
+                    controller: controller,
+                    errorMessage: errorMessage,
                   );
                 }),
                 SizedBox(height: 16.h),
@@ -70,6 +49,44 @@ class ProfilingScreen extends StatelessWidget {
                 ),
               ],
             ),
+          ),
+        ),
+      ),
+    );
+  }
+}
+
+class CustomTextFieldWidget extends StatelessWidget {
+  const CustomTextFieldWidget({
+    super.key,
+    required this.controller,
+    required this.errorMessage,
+  });
+
+  final ProfilingController controller;
+  final String? errorMessage;
+
+  @override
+  Widget build(BuildContext context) {
+    return TextField(
+      controller: controller.nameController,
+      keyboardType: TextInputType.name,
+      decoration: InputDecoration(
+        errorText: errorMessage,
+        labelText: 'Nama',
+        hintText: 'Masukkan nama anda',
+        floatingLabelBehavior: FloatingLabelBehavior.always,
+        floatingLabelStyle: TextStyle(
+          color: errorMessage != null ? ColorStyle.danger : ColorStyle.primary,
+        ),
+        border: OutlineInputBorder(
+          borderRadius: BorderRadius.circular(8.r),
+        ),
+        focusedBorder: OutlineInputBorder(
+          borderRadius: BorderRadius.circular(8.r),
+          borderSide: const BorderSide(
+            color: ColorStyle.primary,
+            width: 2,
           ),
         ),
       ),
