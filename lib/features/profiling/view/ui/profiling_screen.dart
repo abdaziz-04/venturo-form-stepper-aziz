@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 import 'package:venturo_form_stepper/features/profiling/constants/profiling_assets_constant.dart';
@@ -30,8 +31,10 @@ class ProfilingScreen extends StatelessWidget {
                   }
 
                   return CustomTextFieldWidget(
-                    controller: controller,
+                    controller: controller.nameController,
                     errorMessage: errorMessage,
+                    label: 'Nama',
+                    hint: 'Masukkan nama anda',
                   );
                 }),
                 SizedBox(height: 16.h),
@@ -60,21 +63,27 @@ class CustomTextFieldWidget extends StatelessWidget {
   const CustomTextFieldWidget({
     super.key,
     required this.controller,
-    required this.errorMessage,
+    this.errorMessage,
+    this.label,
+    this.hint,
+    this.inputType = TextInputType.name,
   });
 
-  final ProfilingController controller;
+  final TextEditingController controller;
   final String? errorMessage;
+  final String? label;
+  final String? hint;
+  final TextInputType inputType;
 
   @override
   Widget build(BuildContext context) {
     return TextField(
-      controller: controller.nameController,
+      controller: controller,
       keyboardType: TextInputType.name,
       decoration: InputDecoration(
         errorText: errorMessage,
-        labelText: 'Nama',
-        hintText: 'Masukkan nama anda',
+        labelText: label,
+        hintText: hint,
         floatingLabelBehavior: FloatingLabelBehavior.always,
         floatingLabelStyle: TextStyle(
           color: errorMessage != null ? ColorStyle.danger : ColorStyle.primary,
