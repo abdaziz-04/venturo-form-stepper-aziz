@@ -17,7 +17,27 @@ class ProfilingScreen extends StatelessWidget {
             child: Column(
               children: [
                 SizedBox(height: 16.h),
-                const TextField(),
+                TextField(
+                  keyboardType: TextInputType.name,
+                  decoration: InputDecoration(
+                    labelText: 'Nama',
+                    hintText: 'Masukkan nama anda',
+                    floatingLabelBehavior: FloatingLabelBehavior.always,
+                    floatingLabelStyle: const TextStyle(
+                      color: ColorStyle.primary,
+                    ),
+                    border: OutlineInputBorder(
+                      borderRadius: BorderRadius.circular(8.r),
+                    ),
+                    focusedBorder: OutlineInputBorder(
+                      borderRadius: BorderRadius.circular(8.r),
+                      borderSide: const BorderSide(
+                        color: ColorStyle.primary,
+                        width: 2,
+                      ),
+                    ),
+                  ),
+                ),
                 SizedBox(height: 16.h),
                 const TextField(),
                 SizedBox(height: 16.h),
