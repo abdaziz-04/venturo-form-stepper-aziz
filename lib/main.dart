@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
-import 'package:venturo_core/configs/routes/route.dart';
+import 'package:venturo_form_stepper/configs/routes/route.dart';
 
 import 'configs/pages/page.dart';
 import 'configs/themes/theme.dart';
@@ -22,7 +22,7 @@ class MyApp extends StatelessWidget {
       splitScreenMode: true,
       builder: (context, child) {
         return GetMaterialApp(
-          title: 'Venturo Core',
+          title: 'Venturo Form Stepper',
           debugShowCheckedModeBanner: false,
           locale: const Locale('id'),
           fallbackLocale: const Locale('id'),

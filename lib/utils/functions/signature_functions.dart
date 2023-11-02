@@ -1,7 +1,7 @@
 import 'dart:convert';
 
 import 'package:fast_rsa/fast_rsa.dart';
-import 'package:venturo_core/constants/signature_constants.dart';
+import 'package:venturo_form_stepper/constants/signature_constants.dart';
 
 /// Fungsi untuk mengubah [payload] ke bentuk signature
 ///
