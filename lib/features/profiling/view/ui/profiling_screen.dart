@@ -38,7 +38,22 @@ class ProfilingScreen extends StatelessWidget {
                   );
                 }),
                 SizedBox(height: 16.h),
-                const TextField(),
+                Obx(() {
+                  String? errorMessage;
+
+                  errorMessage = controller.emailErrorMessage.value.trim();
+                  if (errorMessage.isEmpty) {
+                    errorMessage = null;
+                  }
+
+                  return CustomTextFieldWidget(
+                    controller: controller.emailController,
+                    errorMessage: errorMessage,
+                    label: 'Email',
+                    hint: 'Masukkan email anda',
+                    inputType: TextInputType.emailAddress,
+                  );
+                }),
                 SizedBox(height: 16.h),
                 const TextField(),
                 SizedBox(height: 16.h),

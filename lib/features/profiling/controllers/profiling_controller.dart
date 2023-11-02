@@ -7,11 +7,15 @@ class ProfilingController extends GetxController {
   var nameController = TextEditingController();
   var nameErrorMessage = "".obs;
 
+  var emailController = TextEditingController();
+  var emailErrorMessage = "".obs;
+
   @override
   void onInit() {
     super.onInit();
 
     nameController.addListener(nameListener);
+    emailController.addListener(emailListener);
   }
 
   void nameListener() {
@@ -22,5 +26,26 @@ class ProfilingController extends GetxController {
     }
 
     nameErrorMessage.value = "";
+  }
+
+  void emailListener() {
+    var email = emailController.text.trim();
+    if (email.isEmpty) {
+      emailErrorMessage.value = "Email tidak boleh kosong";
+      return;
+    }
+
+    if (!isValidEmail(email)) {
+      emailErrorMessage.value = "Email tidak sesuai format";
+      return;
+    }
+
+    emailErrorMessage.value = "";
+  }
+
+  bool isValidEmail(String email) {
+    return RegExp(
+            r"^[a-zA-Z0-9.a-zA-Z0-9.!#$%&'*+-/=?^_`{|}~]+@[a-zA-Z0-9]+\.[a-zA-Z]+")
+        .hasMatch(email);
   }
 }
