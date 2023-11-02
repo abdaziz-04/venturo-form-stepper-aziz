@@ -10,12 +10,16 @@ class ProfilingController extends GetxController {
   var emailController = TextEditingController();
   var emailErrorMessage = "".obs;
 
+  var phoneController = TextEditingController();
+  var phoneErrorMessage = "".obs;
+
   @override
   void onInit() {
     super.onInit();
 
     nameController.addListener(nameListener);
     emailController.addListener(emailListener);
+    phoneController.addListener(phoneListener);
   }
 
   void nameListener() {
@@ -41,6 +45,26 @@ class ProfilingController extends GetxController {
     }
 
     emailErrorMessage.value = "";
+  }
+
+  void phoneListener() {
+    var phone = phoneController.text.trim();
+    if (phone.isEmpty) {
+      phoneErrorMessage.value = "No Hp tidak boleh kosong";
+      return;
+    }
+
+    if (phone.isNotEmpty && phone.length < 9) {
+      phoneErrorMessage.value = "No Hp minimal terdiri dari 9 karakter";
+      return;
+    }
+
+    if (phone.startsWith("0")) {
+      phoneErrorMessage.value = "Tidak boleh diawali dengan 0";
+      return;
+    }
+
+    phoneErrorMessage.value = "";
   }
 
   bool isValidEmail(String email) {

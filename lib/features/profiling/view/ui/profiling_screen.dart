@@ -55,7 +55,25 @@ class ProfilingScreen extends StatelessWidget {
                   );
                 }),
                 SizedBox(height: 16.h),
-                const TextField(),
+                Obx(() {
+                  String? errorMessage;
+
+                  errorMessage = controller.phoneErrorMessage.value.trim();
+                  if (errorMessage.isEmpty) {
+                    errorMessage = null;
+                  }
+
+                  return CustomTextFieldWidget(
+                    controller: controller.phoneController,
+                    errorMessage: errorMessage,
+                    label: 'No HP',
+                    hint: 'Masukkan No HP anda',
+                    inputType: TextInputType.number,
+                    inputFormatters: <TextInputFormatter>[
+                      FilteringTextInputFormatter.digitsOnly
+                    ],
+                  );
+                }),
                 SizedBox(height: 16.h),
                 const TextField(),
                 SizedBox(height: 16.h),
@@ -82,6 +100,7 @@ class CustomTextFieldWidget extends StatelessWidget {
     this.label,
     this.hint,
     this.inputType = TextInputType.name,
+    this.inputFormatters,
   });
 
   final TextEditingController controller;
@@ -89,12 +108,14 @@ class CustomTextFieldWidget extends StatelessWidget {
   final String? label;
   final String? hint;
   final TextInputType inputType;
+  final List<TextInputFormatter>? inputFormatters;
 
   @override
   Widget build(BuildContext context) {
     return TextField(
       controller: controller,
       keyboardType: TextInputType.name,
+      inputFormatters: inputFormatters,
       decoration: InputDecoration(
         errorText: errorMessage,
         labelText: label,
