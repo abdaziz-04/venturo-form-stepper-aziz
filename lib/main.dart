@@ -24,12 +24,6 @@ class MyApp extends StatelessWidget {
         return GetMaterialApp(
           title: 'Venturo Form Stepper',
           debugShowCheckedModeBanner: false,
-          locale: const Locale('id'),
-          fallbackLocale: const Locale('id'),
-          supportedLocales: const [
-            Locale('en', 'US'),
-            Locale('id'),
-          ],
           // initialBinding: , Jika memiliki global bindding
           initialRoute: Routes.profilingRoute,
           theme: themeLight,
