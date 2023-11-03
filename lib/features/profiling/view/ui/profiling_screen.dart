@@ -83,12 +83,21 @@ class ProfilingScreen extends StatelessWidget {
                     errorMessage = null;
                   }
 
+                  var obscurePassword = controller.obscurePassword.value;
+
                   return CustomTextFieldWidget(
                     controller: controller.passwordController,
                     errorMessage: errorMessage,
                     label: 'Kata Sandi',
                     hint: 'Masukkan kata sandi anda',
                     inputType: TextInputType.visiblePassword,
+                    obscureText: obscurePassword,
+                    suffixIcon: InkWell(
+                      onTap: () => controller.showPassword(),
+                      child: Icon(obscurePassword
+                          ? Icons.visibility_off
+                          : Icons.visibility),
+                    ),
                   );
                 }),
                 SizedBox(height: 16.h),
@@ -116,6 +125,8 @@ class CustomTextFieldWidget extends StatelessWidget {
     this.hint,
     this.inputType = TextInputType.name,
     this.inputFormatters,
+    this.obscureText = false,
+    this.suffixIcon,
   });
 
   final TextEditingController controller;
@@ -124,6 +135,8 @@ class CustomTextFieldWidget extends StatelessWidget {
   final String? hint;
   final TextInputType inputType;
   final List<TextInputFormatter>? inputFormatters;
+  final bool obscureText;
+  final Widget? suffixIcon;
 
   @override
   Widget build(BuildContext context) {
@@ -131,6 +144,7 @@ class CustomTextFieldWidget extends StatelessWidget {
       controller: controller,
       keyboardType: TextInputType.name,
       inputFormatters: inputFormatters,
+      obscureText: obscureText,
       decoration: InputDecoration(
         errorText: errorMessage,
         labelText: label,
@@ -149,6 +163,7 @@ class CustomTextFieldWidget extends StatelessWidget {
             width: 2,
           ),
         ),
+        suffixIcon: suffixIcon,
       ),
     );
   }

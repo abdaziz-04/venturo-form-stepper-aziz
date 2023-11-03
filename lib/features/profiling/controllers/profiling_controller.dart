@@ -15,6 +15,7 @@ class ProfilingController extends GetxController {
 
   var passwordController = TextEditingController();
   var passwordErrorMessage = "".obs;
+  var obscurePassword = true.obs;
 
   @override
   void onInit() {
@@ -103,6 +104,10 @@ class ProfilingController extends GetxController {
     }
 
     passwordErrorMessage.value = "";
+  }
+
+  void showPassword() {
+    obscurePassword.toggle();
   }
 
   bool isValidEmail(String email) {
