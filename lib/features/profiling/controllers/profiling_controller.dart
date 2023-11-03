@@ -17,6 +17,10 @@ class ProfilingController extends GetxController {
   var passwordErrorMessage = "".obs;
   var obscurePassword = true.obs;
 
+  var passwordConfirmationController = TextEditingController();
+  var passwordConfirmationErrorMessage = "".obs;
+  var obscurePasswordConfirmation = true.obs;
+
   @override
   void onInit() {
     super.onInit();
@@ -25,6 +29,7 @@ class ProfilingController extends GetxController {
     emailController.addListener(emailListener);
     phoneController.addListener(phoneListener);
     passwordController.addListener(passwordListener);
+    passwordConfirmationController.addListener(passwordConfirmationListener);
   }
 
   void nameListener() {
@@ -75,12 +80,12 @@ class ProfilingController extends GetxController {
   void passwordListener() {
     var password = passwordController.text.trim();
     if (password.isEmpty) {
-      passwordErrorMessage.value = "Password tidak boleh kosong";
+      passwordErrorMessage.value = "Kata sandi tidak boleh kosong";
       return;
     }
 
     if (password.isNotEmpty && password.length < 9) {
-      passwordErrorMessage.value = "Password minimal terdiri dari 9 karakter";
+      passwordErrorMessage.value = "Kata sandi minimal terdiri dari 9 karakter";
       return;
     }
 
@@ -89,25 +94,47 @@ class ProfilingController extends GetxController {
     RegExp number = RegExp(r'[0-9]');
 
     if (!upperCase.hasMatch(password)) {
-      passwordErrorMessage.value = "Password harus mengandung 1 huruf besar";
+      passwordErrorMessage.value = "Kata sandi harus mengandung 1 huruf besar";
       return;
     }
 
     if (!lowerCase.hasMatch(password)) {
-      passwordErrorMessage.value = "Password harus mengandung 1 huruf kecil";
+      passwordErrorMessage.value = "Kata sandi harus mengandung 1 huruf kecil";
       return;
     }
 
     if (!number.hasMatch(password)) {
-      passwordErrorMessage.value = "Password harus mengandung 1 angka";
+      passwordErrorMessage.value = "Kata sandi harus mengandung 1 angka";
       return;
     }
 
     passwordErrorMessage.value = "";
   }
 
+  void passwordConfirmationListener() {
+    var passwordConfirmation = passwordConfirmationController.text.trim();
+    if (passwordConfirmation.isEmpty) {
+      passwordConfirmationErrorMessage.value =
+          "Konfirmasi Kata sandi tidak boleh kosong";
+      return;
+    }
+
+    var password = passwordController.text.trim();
+    if (passwordConfirmation != password) {
+      passwordConfirmationErrorMessage.value =
+          "Konfirmasi Kata sandi tidak sama";
+      return;
+    }
+
+    passwordConfirmationErrorMessage.value = "";
+  }
+
   void showPassword() {
     obscurePassword.toggle();
+  }
+
+  void showConfirmationPassword() {
+    obscurePasswordConfirmation.toggle();
   }
 
   bool isValidEmail(String email) {

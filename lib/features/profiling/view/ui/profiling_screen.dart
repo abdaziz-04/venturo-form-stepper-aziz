@@ -101,7 +101,33 @@ class ProfilingScreen extends StatelessWidget {
                   );
                 }),
                 SizedBox(height: 16.h),
-                const TextField(),
+                Obx(() {
+                  String? errorMessage;
+
+                  errorMessage =
+                      controller.passwordConfirmationErrorMessage.value.trim();
+                  if (errorMessage.isEmpty) {
+                    errorMessage = null;
+                  }
+
+                  var obscurePassword =
+                      controller.obscurePasswordConfirmation.value;
+
+                  return CustomTextFieldWidget(
+                    controller: controller.passwordConfirmationController,
+                    errorMessage: errorMessage,
+                    label: 'Konfirmasi Kata Sandi',
+                    hint: 'Masukkan konfirmasi kata sandi',
+                    inputType: TextInputType.visiblePassword,
+                    obscureText: obscurePassword,
+                    suffixIcon: InkWell(
+                      onTap: () => controller.showConfirmationPassword(),
+                      child: Icon(obscurePassword
+                          ? Icons.visibility_off
+                          : Icons.visibility),
+                    ),
+                  );
+                }),
                 SizedBox(height: 24.h),
                 ElevatedButton(
                   onPressed: () {},
