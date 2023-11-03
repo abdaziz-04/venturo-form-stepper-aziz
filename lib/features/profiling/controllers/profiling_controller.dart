@@ -13,6 +13,9 @@ class ProfilingController extends GetxController {
   var phoneController = TextEditingController();
   var phoneErrorMessage = "".obs;
 
+  var passwordController = TextEditingController();
+  var passwordErrorMessage = "".obs;
+
   @override
   void onInit() {
     super.onInit();
@@ -20,6 +23,7 @@ class ProfilingController extends GetxController {
     nameController.addListener(nameListener);
     emailController.addListener(emailListener);
     phoneController.addListener(phoneListener);
+    passwordController.addListener(passwordListener);
   }
 
   void nameListener() {
@@ -65,6 +69,40 @@ class ProfilingController extends GetxController {
     }
 
     phoneErrorMessage.value = "";
+  }
+
+  void passwordListener() {
+    var password = passwordController.text.trim();
+    if (password.isEmpty) {
+      passwordErrorMessage.value = "Password tidak boleh kosong";
+      return;
+    }
+
+    if (password.isNotEmpty && password.length < 9) {
+      passwordErrorMessage.value = "Password minimal terdiri dari 9 karakter";
+      return;
+    }
+
+    RegExp upperCase = RegExp(r'[A-Z]');
+    RegExp lowerCase = RegExp(r'[a-z]');
+    RegExp number = RegExp(r'[0-9]');
+
+    if (!upperCase.hasMatch(password)) {
+      passwordErrorMessage.value = "Password harus mengandung 1 huruf besar";
+      return;
+    }
+
+    if (!lowerCase.hasMatch(password)) {
+      passwordErrorMessage.value = "Password harus mengandung 1 huruf kecil";
+      return;
+    }
+
+    if (!number.hasMatch(password)) {
+      passwordErrorMessage.value = "Password harus mengandung 1 angka";
+      return;
+    }
+
+    passwordErrorMessage.value = "";
   }
 
   bool isValidEmail(String email) {

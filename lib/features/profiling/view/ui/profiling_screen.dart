@@ -75,7 +75,22 @@ class ProfilingScreen extends StatelessWidget {
                   );
                 }),
                 SizedBox(height: 16.h),
-                const TextField(),
+                Obx(() {
+                  String? errorMessage;
+
+                  errorMessage = controller.passwordErrorMessage.value.trim();
+                  if (errorMessage.isEmpty) {
+                    errorMessage = null;
+                  }
+
+                  return CustomTextFieldWidget(
+                    controller: controller.passwordController,
+                    errorMessage: errorMessage,
+                    label: 'Kata Sandi',
+                    hint: 'Masukkan kata sandi anda',
+                    inputType: TextInputType.visiblePassword,
+                  );
+                }),
                 SizedBox(height: 16.h),
                 const TextField(),
                 SizedBox(height: 24.h),
