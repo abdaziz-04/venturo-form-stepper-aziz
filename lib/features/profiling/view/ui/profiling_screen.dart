@@ -22,6 +22,46 @@ class ProfilingScreen extends StatelessWidget {
             padding: EdgeInsets.symmetric(horizontal: 24.w),
             child: Column(
               children: [
+                Row(
+                  children: [
+                    Container(
+                      width: 20.w,
+                      height: 20.h,
+                      decoration: const BoxDecoration(
+                        color: ColorStyle.primary,
+                        shape: BoxShape.circle,
+                      ),
+                    ),
+                    Expanded(
+                      child: Container(
+                        height: 5.h,
+                        color: ColorStyle.primary,
+                      ),
+                    ),
+                    Container(
+                      width: 20.w,
+                      height: 20.h,
+                      decoration: const BoxDecoration(
+                        color: ColorStyle.primary,
+                        shape: BoxShape.circle,
+                      ),
+                    ),
+                    Expanded(
+                      child: Container(
+                        height: 5.h,
+                        color: ColorStyle.primary,
+                      ),
+                    ),
+                    Container(
+                      width: 20.w,
+                      height: 20.h,
+                      decoration: const BoxDecoration(
+                        color: ColorStyle.primary,
+                        shape: BoxShape.circle,
+                      ),
+                    ),
+                  ],
+                ),
                 SizedBox(height: 16.h),
                 Obx(() {
                   String? errorMessage;
