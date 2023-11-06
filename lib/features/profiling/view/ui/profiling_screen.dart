@@ -38,14 +38,17 @@ class ProfilingScreen extends StatelessWidget {
                         selected = true;
                       }
 
-                      return Container(
-                        width: 20.w,
-                        height: 20.h,
-                        decoration: BoxDecoration(
-                          color: selected
-                              ? ColorStyle.primary
-                              : ColorStyle.colorE9ECEF,
-                          shape: BoxShape.circle,
+                      return InkWell(
+                        onTap: () => controller.setProfilingStep(0),
+                        child: Container(
+                          width: 20.w,
+                          height: 20.h,
+                          decoration: BoxDecoration(
+                            color: selected
+                                ? ColorStyle.primary
+                                : ColorStyle.colorE9ECEF,
+                            shape: BoxShape.circle,
+                          ),
                         ),
                       );
                     }),
@@ -89,14 +92,17 @@ class ProfilingScreen extends StatelessWidget {
                         selected = true;
                       }
 
-                      return Container(
-                        width: 20.w,
-                        height: 20.h,
-                        decoration: BoxDecoration(
-                          color: selected
-                              ? ColorStyle.primary
-                              : ColorStyle.colorE9ECEF,
-                          shape: BoxShape.circle,
+                      return InkWell(
+                        onTap: () => controller.setProfilingStep(1),
+                        child: Container(
+                          width: 20.w,
+                          height: 20.h,
+                          decoration: BoxDecoration(
+                            color: selected
+                                ? ColorStyle.primary
+                                : ColorStyle.colorE9ECEF,
+                            shape: BoxShape.circle,
+                          ),
                         ),
                       );
                     }),
@@ -137,14 +143,17 @@ class ProfilingScreen extends StatelessWidget {
                         selected = true;
                       }
 
-                      return Container(
-                        width: 20.w,
-                        height: 20.h,
-                        decoration: BoxDecoration(
-                          color: selected
-                              ? ColorStyle.primary
-                              : ColorStyle.colorE9ECEF,
-                          shape: BoxShape.circle,
+                      return InkWell(
+                        onTap: () => controller.setProfilingStep(2),
+                        child: Container(
+                          width: 20.w,
+                          height: 20.h,
+                          decoration: BoxDecoration(
+                            color: selected
+                                ? ColorStyle.primary
+                                : ColorStyle.colorE9ECEF,
+                            shape: BoxShape.circle,
+                          ),
                         ),
                       );
                     }),

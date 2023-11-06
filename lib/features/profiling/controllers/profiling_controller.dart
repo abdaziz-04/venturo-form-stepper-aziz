@@ -152,4 +152,9 @@ class ProfilingController extends GetxController {
   void previousProfilingStep() {
     profilingStepIndex--;
   }
+
+  /// Set Profiling Step berdasarkan index
+  void setProfilingStep(int index) {
+    profilingStepIndex.value = index;
+  }
 }
