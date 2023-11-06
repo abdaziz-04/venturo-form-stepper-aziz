@@ -142,4 +142,14 @@ class ProfilingController extends GetxController {
             r"^[a-zA-Z0-9.a-zA-Z0-9.!#$%&'*+-/=?^_`{|}~]+@[a-zA-Z0-9]+\.[a-zA-Z]+")
         .hasMatch(email);
   }
+
+  var profilingStepIndex = 0.obs;
+
+  void nextProfilingStep() {
+    profilingStepIndex++;
+  }
+
+  void previousProfilingStep() {
+    profilingStepIndex--;
+  }
 }
