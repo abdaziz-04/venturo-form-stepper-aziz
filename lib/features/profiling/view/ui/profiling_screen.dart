@@ -4,6 +4,7 @@ import 'package:get/get.dart';
 import 'package:venturo_form_stepper/features/profiling/constants/profiling_assets_constant.dart';
 import 'package:venturo_form_stepper/features/profiling/controllers/profiling_controller.dart';
 import 'package:venturo_form_stepper/features/profiling/sub_features/profiling_one/view/ui/profiling_one_screen.dart';
+import 'package:venturo_form_stepper/features/profiling/sub_features/profiling_two/view/ui/profiling_two_screen.dart';
 import 'package:venturo_form_stepper/features/profiling/view/components/progress_profiling_component.dart';
 
 class ProfilingScreen extends StatelessWidget {
@@ -31,9 +32,7 @@ class ProfilingScreen extends StatelessWidget {
                   }
 
                   if (profilingStep == 1) {
-                    return const Center(
-                      child: Text('Profiling Step 2'),
-                    );
+                    return ProfilingTwoScreen();
                   }
 
                   if (profilingStep == 2) {
