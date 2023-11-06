@@ -1,12 +1,10 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 import 'package:venturo_form_stepper/features/profiling/constants/profiling_assets_constant.dart';
 import 'package:venturo_form_stepper/features/profiling/controllers/profiling_controller.dart';
+import 'package:venturo_form_stepper/features/profiling/sub_features/profiling_one/view/ui/profiling_one_screen.dart';
 import 'package:venturo_form_stepper/features/profiling/view/components/progress_profiling_component.dart';
-import 'package:venturo_form_stepper/shared/styles/color_style.dart';
-import 'package:venturo_form_stepper/shared/widgets/custom_text_field_widget.dart';
 
 class ProfilingScreen extends StatelessWidget {
   ProfilingScreen({Key? key}) : super(key: key);
@@ -26,143 +24,26 @@ class ProfilingScreen extends StatelessWidget {
                 ProgressProfilingComponent(controller: controller),
                 SizedBox(height: 16.h),
                 Obx(() {
-                  String? errorMessage;
+                  var profilingStep = controller.profilingStepIndex.value;
 
-                  errorMessage = controller.nameErrorMessage.value.trim();
-                  if (errorMessage.isEmpty) {
-                    errorMessage = null;
+                  if (profilingStep == 0) {
+                    return ProfilingOneScreen();
                   }
 
-                  return CustomTextFieldWidget(
-                    controller: controller.nameController,
-                    errorMessage: errorMessage,
-                    label: 'Nama',
-                    hint: 'Masukkan nama anda',
-                  );
-                }),
-                SizedBox(height: 16.h),
-                Obx(() {
-                  String? errorMessage;
-
-                  errorMessage = controller.emailErrorMessage.value.trim();
-                  if (errorMessage.isEmpty) {
-                    errorMessage = null;
+                  if (profilingStep == 1) {
+                    return const Center(
+                      child: Text('Profiling Step 2'),
+                    );
                   }
 
-                  return CustomTextFieldWidget(
-                    controller: controller.emailController,
-                    errorMessage: errorMessage,
-                    label: 'Email',
-                    hint: 'Masukkan email anda',
-                    inputType: TextInputType.emailAddress,
-                  );
-                }),
-                SizedBox(height: 16.h),
-                Obx(() {
-                  String? errorMessage;
-
-                  errorMessage = controller.phoneErrorMessage.value.trim();
-                  if (errorMessage.isEmpty) {
-                    errorMessage = null;
+                  if (profilingStep == 2) {
+                    return const Center(
+                      child: Text('Profiling Step 3'),
+                    );
                   }
 
-                  return CustomTextFieldWidget(
-                    controller: controller.phoneController,
-                    errorMessage: errorMessage,
-                    label: 'No HP',
-                    hint: 'Masukkan No HP anda',
-                    inputType: TextInputType.number,
-                    inputFormatters: <TextInputFormatter>[
-                      FilteringTextInputFormatter.digitsOnly
-                    ],
-                  );
+                  return const SizedBox();
                 }),
-                SizedBox(height: 16.h),
-                Obx(() {
-                  String? errorMessage;
-
-                  errorMessage = controller.passwordErrorMessage.value.trim();
-                  if (errorMessage.isEmpty) {
-                    errorMessage = null;
-                  }
-
-                  var obscurePassword = controller.obscurePassword.value;
-
-                  return CustomTextFieldWidget(
-                    controller: controller.passwordController,
-                    errorMessage: errorMessage,
-                    label: 'Kata Sandi',
-                    hint: 'Masukkan kata sandi anda',
-                    inputType: TextInputType.visiblePassword,
-                    obscureText: obscurePassword,
-                    suffixIcon: InkWell(
-                      onTap: () => controller.showPassword(),
-                      child: Icon(obscurePassword
-                          ? Icons.visibility_off
-                          : Icons.visibility),
-                    ),
-                  );
-                }),
-                SizedBox(height: 16.h),
-                Obx(() {
-                  String? errorMessage;
-
-                  errorMessage =
-                      controller.passwordConfirmationErrorMessage.value.trim();
-                  if (errorMessage.isEmpty) {
-                    errorMessage = null;
-                  }
-
-                  var obscurePassword =
-                      controller.obscurePasswordConfirmation.value;
-
-                  return CustomTextFieldWidget(
-                    controller: controller.passwordConfirmationController,
-                    errorMessage: errorMessage,
-                    label: 'Konfirmasi Kata Sandi',
-                    hint: 'Masukkan konfirmasi kata sandi',
-                    inputType: TextInputType.visiblePassword,
-                    obscureText: obscurePassword,
-                    suffixIcon: InkWell(
-                      onTap: () => controller.showConfirmationPassword(),
-                      child: Icon(obscurePassword
-                          ? Icons.visibility_off
-                          : Icons.visibility),
-                    ),
-                  );
-                }),
-                SizedBox(height: 24.h),
-                Row(
-                  children: [
-                    Expanded(
-                      child: ElevatedButton(
-                        onPressed: () {},
-                        style: ElevatedButton.styleFrom(
-                          elevation: 0,
-                          backgroundColor: ColorStyle.primary,
-                          padding: EdgeInsets.symmetric(
-                            horizontal: 16.w,
-                            vertical: 16.h,
-                          ),
-                          minimumSize: const Size(0, 0),
-                          shape: RoundedRectangleBorder(
-                            borderRadius: BorderRadius.circular(
-                              16.r,
-                            ),
-                          ),
-                        ),
-                        child: Text(
-                          'Submit',
-                          style: TextStyle(
-                            color: ColorStyle.white,
-                            fontSize: 16.sp,
-                            fontWeight: FontWeight.w700,
-                          ),
-                        ),
-                      ),
-                    ),
-                  ],
-                ),
               ],
             ),
           ),
