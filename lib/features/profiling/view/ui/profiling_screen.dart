@@ -4,6 +4,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 import 'package:venturo_form_stepper/features/profiling/constants/profiling_assets_constant.dart';
 import 'package:venturo_form_stepper/features/profiling/controllers/profiling_controller.dart';
+import 'package:venturo_form_stepper/shared/styles/color_style.dart';
 import 'package:venturo_form_stepper/shared/widgets/custom_text_field_widget.dart';
 
 class ProfilingScreen extends StatelessWidget {
@@ -129,9 +130,36 @@ class ProfilingScreen extends StatelessWidget {
                   );
                 }),
                 SizedBox(height: 24.h),
-                ElevatedButton(
-                  onPressed: () {},
-                  child: const Text('Submit Form'),
+                Row(
+                  children: [
+                    Expanded(
+                      child: ElevatedButton(
+                        onPressed: () {},
+                        style: ElevatedButton.styleFrom(
+                          elevation: 0,
+                          backgroundColor: ColorStyle.primary,
+                          padding: EdgeInsets.symmetric(
+                            horizontal: 16.w,
+                            vertical: 16.h,
+                          ),
+                          minimumSize: const Size(0, 0),
+                          shape: RoundedRectangleBorder(
+                            borderRadius: BorderRadius.circular(
+                              16.r,
+                            ),
+                          ),
+                        ),
+                        child: Text(
+                          'Submit',
+                          style: TextStyle(
+                            color: ColorStyle.white,
+                            fontSize: 16.sp,
+                            fontWeight: FontWeight.w700,
+                          ),
+                        ),
+                      ),
+                    ),
+                  ],
                 ),
               ],
             ),
