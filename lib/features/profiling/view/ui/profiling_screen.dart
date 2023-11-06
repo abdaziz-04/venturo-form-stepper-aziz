@@ -24,42 +24,130 @@ class ProfilingScreen extends StatelessWidget {
               children: [
                 Row(
                   children: [
-                    Container(
-                      width: 20.w,
-                      height: 20.h,
-                      decoration: const BoxDecoration(
-                        color: ColorStyle.primary,
-                        shape: BoxShape.circle,
-                      ),
-                    ),
-                    Expanded(
-                      child: Container(
-                        height: 5.h,
-                        color: ColorStyle.primary,
-                      ),
-                    ),
-                    Container(
-                      width: 20.w,
-                      height: 20.h,
-                      decoration: const BoxDecoration(
-                        color: ColorStyle.primary,
-                        shape: BoxShape.circle,
-                      ),
-                    ),
-                    Expanded(
-                      child: Container(
-                        height: 5.h,
-                        color: ColorStyle.primary,
-                      ),
-                    ),
-                    Container(
-                      width: 20.w,
-                      height: 20.h,
-                      decoration: const BoxDecoration(
-                        color: ColorStyle.primary,
-                        shape: BoxShape.circle,
-                      ),
-                    ),
+                    /* Lingkaran Step Profiling 1*/
+                    Obx(() {
+                      var profilingStepIndex =
+                          controller.profilingStepIndex.value;
+
+                      /// Jika step profiling pada step 1 (index = 0) atau lebih
+                      ///
+                      /// Berikan warna lingkaran menjadi [ColorStyle.primary]
+                      /// Jika tidak, ubah color menjadi [ColorStyle.colorE9ECEF]
+                      var selected = false;
+                      if (profilingStepIndex >= 0) {
+                        selected = true;
+                      }
+
+                      return Container(
+                        width: 20.w,
+                        height: 20.h,
+                        decoration: BoxDecoration(
+                          color: selected
+                              ? ColorStyle.primary
+                              : ColorStyle.colorE9ECEF,
+                          shape: BoxShape.circle,
+                        ),
+                      );
+                    }),
+
+                    /* Garis Step Profiling 1 */
+                    Obx(() {
+                      var profilingStepIndex =
+                          controller.profilingStepIndex.value;
+
+                      /// Jika step profiling pada step 2 (index 1) atau lebih
+                      ///
+                      /// Berikan warna container menjadi [ColorStyle.primary]
+                      /// Jika tidak, ubah color menjadi [ColorStyle.colorE9ECEF]
+                      var selected = false;
+                      if (profilingStepIndex >= 1) {
+                        selected = true;
+                      }
+
+                      return Expanded(
+                        child: Container(
+                          height: 5.h,
+                          decoration: BoxDecoration(
+                            color: selected
+                                ? ColorStyle.primary
+                                : ColorStyle.colorE9ECEF,
+                          ),
+                        ),
+                      );
+                    }),
+                    /* Lingkaran Step Profiling 2 */
+                    Obx(() {
+                      var profilingStepIndex =
+                          controller.profilingStepIndex.value;
+
+                      /// Jika step profiling pada step 2 (index = 1) atau lebih
+                      ///
+                      /// Berikan warna lingkaran menjadi [ColorStyle.primary]
+                      /// Jika tidak, ubah color menjadi [ColorStyle.colorE9ECEF]
+                      var selected = false;
+                      if (profilingStepIndex >= 1) {
+                        selected = true;
+                      }
+
+                      return Container(
+                        width: 20.w,
+                        height: 20.h,
+                        decoration: BoxDecoration(
+                          color: selected
+                              ? ColorStyle.primary
+                              : ColorStyle.colorE9ECEF,
+                          shape: BoxShape.circle,
+                        ),
+                      );
+                    }),
+                    /* Garis Step Profiling 2 */
+                    Obx(() {
+                      var profilingStepIndex =
+                          controller.profilingStepIndex.value;
+
+                      /// Jika step profiling pada step 3 (index 2)
+                      ///
+                      /// Berikan warna container menjadi [ColorStyle.primary]
+                      /// Jika tidak, ubah color menjadi [ColorStyle.colorE9ECEF]
+                      var selected = false;
+                      if (profilingStepIndex == 2) {
+                        selected = true;
+                      }
+
+                      return Expanded(
+                        child: Container(
+                          height: 5.h,
+                          color: selected
+                              ? ColorStyle.primary
+                              : ColorStyle.colorE9ECEF,
+                        ),
+                      );
+                    }),
+                    /* Lingkaran Step Profiling 3 */
+                    Obx(() {
+                      var profilingStepIndex =
+                          controller.profilingStepIndex.value;
+
+                      /// Jika step profiling pada step 3 (index = 2)
+                      ///
+                      /// Berikan warna lingkaran menjadi [ColorStyle.primary]
+                      /// Jika tidak, ubah color menjadi [ColorStyle.colorE9ECEF]
+                      var selected = false;
+                      if (profilingStepIndex == 2) {
+                        selected = true;
+                      }
+
+                      return Container(
+                        width: 20.w,
+                        height: 20.h,
+                        decoration: BoxDecoration(
+                          color: selected
+                              ? ColorStyle.primary
+                              : ColorStyle.colorE9ECEF,
+                          shape: BoxShape.circle,
+                        ),
+                      );
+                    }),
                   ],
                 ),
                 SizedBox(height: 16.h),
