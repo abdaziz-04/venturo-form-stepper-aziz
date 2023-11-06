@@ -26,7 +26,7 @@ class MyApp extends StatelessWidget {
           debugShowCheckedModeBanner: false,
           // initialBinding: , Jika memiliki global bindding
           initialRoute: Routes.profilingRoute,
-          theme: themeLight,
+          theme: mainTheme,
           defaultTransition: Transition.native,
           getPages: Pages.pages,
         );
