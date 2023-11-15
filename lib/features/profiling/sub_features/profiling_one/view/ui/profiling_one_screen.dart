@@ -4,8 +4,8 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 import 'package:venturo_form_stepper/features/profiling/constants/profiling_assets_constant.dart';
 import 'package:venturo_form_stepper/features/profiling/sub_features/profiling_one/controllers/profiling_profiling_one_controller.dart';
-import 'package:venturo_form_stepper/shared/styles/color_style.dart';
 import 'package:venturo_form_stepper/shared/widgets/custom_text_field_widget.dart';
+import 'package:venturo_form_stepper/shared/widgets/primary_button_widget.dart';
 
 class ProfilingOneScreen extends StatelessWidget {
   ProfilingOneScreen({Key? key}) : super(key: key);
@@ -124,30 +124,9 @@ class ProfilingOneScreen extends StatelessWidget {
         Row(
           children: [
             Expanded(
-              child: ElevatedButton(
+              child: PrimaryButtonWidget(
+                label: 'Submit',
                 onPressed: () {},
-                style: ElevatedButton.styleFrom(
-                  elevation: 0,
-                  backgroundColor: ColorStyle.primary,
-                  padding: EdgeInsets.symmetric(
-                    horizontal: 16.w,
-                    vertical: 16.h,
-                  ),
-                  minimumSize: const Size(0, 0),
-                  shape: RoundedRectangleBorder(
-                    borderRadius: BorderRadius.circular(
-                      16.r,
-                    ),
-                  ),
-                ),
-                child: Text(
-                  'Submit',
-                  style: TextStyle(
-                    color: ColorStyle.white,
-                    fontSize: 16.sp,
-                    fontWeight: FontWeight.w700,
-                  ),
-                ),
               ),
             ),
           ],
