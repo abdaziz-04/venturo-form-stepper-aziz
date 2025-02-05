@@ -24,7 +24,6 @@ class MyApp extends StatelessWidget {
         return GetMaterialApp(
           title: 'Venturo Form Stepper',
           debugShowCheckedModeBanner: false,
-          // initialBinding: , Jika memiliki global bindding
           initialRoute: Routes.profilingRoute,
           theme: mainTheme,
           defaultTransition: Transition.native,

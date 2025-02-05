@@ -8,6 +8,11 @@ import 'package:venturo_form_stepper/features/splash/view/ui/splash_screen.dart'
 abstract class Pages {
   static final pages = [
     GetPage(
+      name: Routes.profilingRoute,
+      page: () => ProfilingScreen(),
+      binding: ProfilingBinding(),
+    ),
+    GetPage(
       name: Routes.splashRoute,
       page: () => SplashScreen(),
       binding: SplashBinding(),

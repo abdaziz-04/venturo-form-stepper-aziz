@@ -1,3 +1,3 @@
-class ProfilingApiConstant {
-  final String example = 'example';
-}
+    class ProfilingApiConstant {
+    final String example = 'example';
+    }

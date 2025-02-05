@@ -1,3 +1,3 @@
-class ProfilingAssetsConstant {
-  final String example = 'example';
-}
+    class ProfilingAssetsConstant {
+    final String example = 'example';
+    }
